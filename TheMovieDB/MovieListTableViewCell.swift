@@ -9,6 +9,11 @@ import UIKit
 
 class MovieListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var movieDescription: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +24,13 @@ class MovieListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func loadData(data: TMDMovieListModel){
+        movieTitle.text = data.movieTitle
+        releaseDate.text = data.movieReleaseDate
+        movieDescription.text = data.movieDescription
+        let movieImageLink = imageSrc + data.imageUrl
+        movieImage.imageFromURL(urlString: movieImageLink)
+    }
+    
 }
