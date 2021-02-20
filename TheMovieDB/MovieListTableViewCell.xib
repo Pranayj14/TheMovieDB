@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieListTableViewCell" rowHeight="239" id="gBk-sf-T42" customClass="MovieListTableViewCell" customModule="TheMovieDb" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gBk-sf-T42" id="GOX-B2-qIA">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="epO-sd-ojA">
+                        <rect key="frame" x="10" y="10" width="150" height="175"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="DpR-8y-rKI"/>
+                            <constraint firstAttribute="height" constant="175" id="bna-tA-hkb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-Ym-oHs">
+                        <rect key="frame" x="170" y="10" width="234" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3go-D4-I1i">
+                        <rect key="frame" x="170" y="20" width="234" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-jf-cJ2">
+                        <rect key="frame" x="170" y="30" width="234" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8ld-jf-cJ2" firstAttribute="top" secondItem="3go-D4-I1i" secondAttribute="bottom" constant="10" id="6Ce-3Q-QS9"/>
+                    <constraint firstItem="3go-D4-I1i" firstAttribute="leading" secondItem="ozj-Ym-oHs" secondAttribute="leading" id="8C5-HX-jIe"/>
+                    <constraint firstAttribute="bottom" secondItem="epO-sd-ojA" secondAttribute="bottom" constant="10" id="A8F-eG-r1R"/>
+                    <constraint firstAttribute="trailing" secondItem="ozj-Ym-oHs" secondAttribute="trailing" constant="10" id="FJU-Lm-vPx"/>
+                    <constraint firstItem="3go-D4-I1i" firstAttribute="trailing" secondItem="ozj-Ym-oHs" secondAttribute="trailing" id="KJr-1k-Q2w"/>
+                    <constraint firstItem="8ld-jf-cJ2" firstAttribute="trailing" secondItem="3go-D4-I1i" secondAttribute="trailing" id="M0t-7d-hIo"/>
+                    <constraint firstItem="epO-sd-ojA" firstAttribute="leading" secondItem="GOX-B2-qIA" secondAttribute="leading" constant="10" id="PKl-mX-htq"/>
+                    <constraint firstItem="3go-D4-I1i" firstAttribute="top" secondItem="ozj-Ym-oHs" secondAttribute="bottom" constant="10" id="Ujj-WO-Z5D"/>
+                    <constraint firstItem="ozj-Ym-oHs" firstAttribute="leading" secondItem="epO-sd-ojA" secondAttribute="trailing" constant="10" id="Wyt-MY-7Ma"/>
+                    <constraint firstItem="8ld-jf-cJ2" firstAttribute="leading" secondItem="3go-D4-I1i" secondAttribute="leading" id="Yhz-cK-9k6"/>
+                    <constraint firstItem="ozj-Ym-oHs" firstAttribute="top" secondItem="epO-sd-ojA" secondAttribute="top" id="kTY-KT-OGH"/>
+                    <constraint firstItem="epO-sd-ojA" firstAttribute="centerY" secondItem="GOX-B2-qIA" secondAttribute="centerY" id="ocP-bK-j8I"/>
+                    <constraint firstItem="epO-sd-ojA" firstAttribute="top" secondItem="GOX-B2-qIA" secondAttribute="top" constant="10" id="tLZ-Dy-48j"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="movieDescription" destination="8ld-jf-cJ2" id="BHx-Fe-4lY"/>
+                <outlet property="movieImage" destination="epO-sd-ojA" id="L1H-A4-zkt"/>
+                <outlet property="movieTitle" destination="ozj-Ym-oHs" id="Jg9-EZ-QC2"/>
+                <outlet property="releaseDate" destination="3go-D4-I1i" id="0Bu-Ji-igD"/>
+            </connections>
+            <point key="canvasLocation" x="247.82608695652175" y="39.84375"/>
+        </tableViewCell>
+    </objects>
+</document>
