@@ -38,8 +38,102 @@
             </objects>
             <point key="canvasLocation" x="43886" y="141"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="sfe-E6-2hy">
+            <objects>
+                <viewController restorationIdentifier="SearchViewController" storyboardIdentifier="SearchViewController" id="Ezz-Bb-7SQ" customClass="SearchViewController" customModule="TheMovieDb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lOV-2K-ElB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XYL-SG-01W">
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMt-Pf-wgh">
+                                <rect key="frame" x="10" y="54" width="394" height="41"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="oJJ-3c-wbv">
+                                        <rect key="frame" x="8" y="10.5" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="oJJ-3c-wbv" secondAttribute="height" multiplier="1:1" id="3Yq-fS-X6u"/>
+                                            <constraint firstAttribute="height" constant="20" id="g9u-C2-PZX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Users" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4WH-Ee-Sr1" userLabel="Movie Search Textfield">
+                                        <rect key="frame" x="36" y="2" width="290" height="37"/>
+                                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="QOH-Dx-3eR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="searchMovieText:" destination="Ezz-Bb-7SQ" eventType="editingChanged" id="pvH-OH-fyZ"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-dg-m70">
+                                        <rect key="frame" x="334" y="5" width="50" height="31"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="clearSearchText:" destination="Ezz-Bb-7SQ" eventType="touchUpInside" id="kes-e0-4RE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="oJJ-3c-wbv" firstAttribute="leading" secondItem="pMt-Pf-wgh" secondAttribute="leading" constant="8" id="2w9-rs-Ffd"/>
+                                    <constraint firstItem="4WH-Ee-Sr1" firstAttribute="leading" secondItem="oJJ-3c-wbv" secondAttribute="trailing" constant="8" id="CBe-lj-NTY"/>
+                                    <constraint firstItem="4WH-Ee-Sr1" firstAttribute="top" secondItem="pMt-Pf-wgh" secondAttribute="top" constant="2" id="Cg6-4q-CA6"/>
+                                    <constraint firstItem="oJJ-3c-wbv" firstAttribute="centerY" secondItem="pMt-Pf-wgh" secondAttribute="centerY" id="OPE-UM-stB"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Z9-dg-m70" secondAttribute="trailing" constant="10" id="WV2-lF-V5o"/>
+                                    <constraint firstItem="4Z9-dg-m70" firstAttribute="leading" secondItem="4WH-Ee-Sr1" secondAttribute="trailing" constant="8" symbolic="YES" id="aEu-pW-GP0"/>
+                                    <constraint firstAttribute="bottom" secondItem="4WH-Ee-Sr1" secondAttribute="bottom" constant="2" id="qM9-Uy-RJu"/>
+                                    <constraint firstAttribute="height" constant="41" id="tpV-Ck-vUi"/>
+                                    <constraint firstItem="4Z9-dg-m70" firstAttribute="centerY" secondItem="pMt-Pf-wgh" secondAttribute="centerY" id="wrD-xr-jpn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recently Searched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj3-aV-J0G">
+                                <rect key="frame" x="128.5" y="103" width="157" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1sA-2Z-Wsg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pMt-Pf-wgh" firstAttribute="leading" secondItem="1sA-2Z-Wsg" secondAttribute="leading" constant="10" id="3kr-3T-4na"/>
+                            <constraint firstItem="XYL-SG-01W" firstAttribute="trailing" secondItem="1sA-2Z-Wsg" secondAttribute="trailing" id="4jG-Q1-WP6"/>
+                            <constraint firstAttribute="bottom" secondItem="XYL-SG-01W" secondAttribute="bottom" id="8vY-qp-hbm"/>
+                            <constraint firstItem="pMt-Pf-wgh" firstAttribute="top" secondItem="1sA-2Z-Wsg" secondAttribute="top" constant="10" id="F3h-Qg-ksL"/>
+                            <constraint firstItem="XYL-SG-01W" firstAttribute="top" secondItem="yj3-aV-J0G" secondAttribute="bottom" constant="8" symbolic="YES" id="I3O-5b-0MB"/>
+                            <constraint firstItem="1sA-2Z-Wsg" firstAttribute="trailing" secondItem="pMt-Pf-wgh" secondAttribute="trailing" constant="10" id="NOw-gU-0EX"/>
+                            <constraint firstItem="XYL-SG-01W" firstAttribute="top" secondItem="pMt-Pf-wgh" secondAttribute="bottom" constant="37" id="ONy-rY-2Oa"/>
+                            <constraint firstItem="XYL-SG-01W" firstAttribute="leading" secondItem="1sA-2Z-Wsg" secondAttribute="leading" id="VJF-pJ-d2q"/>
+                            <constraint firstItem="yj3-aV-J0G" firstAttribute="centerX" secondItem="lOV-2K-ElB" secondAttribute="centerX" id="Xkg-fi-gKa"/>
+                            <constraint firstItem="yj3-aV-J0G" firstAttribute="top" secondItem="pMt-Pf-wgh" secondAttribute="bottom" constant="8" symbolic="YES" id="vB4-8H-g9k"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieSearchTextfield" destination="4WH-Ee-Sr1" id="AaL-zr-TQv"/>
+                        <outlet property="recentlySearchedLabel" destination="yj3-aV-J0G" id="3uW-n8-n8y"/>
+                        <outlet property="searchMovieListTableView" destination="XYL-SG-01W" id="Ytq-PD-Fyn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZS8-Iz-y2y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44777" y="141"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="search" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
