@@ -13,9 +13,9 @@
 		CE0ECD2525E0F9090089DCBE /* MovieListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0ECD2425E0F9090089DCBE /* MovieListTableViewCell.xib */; };
 		CE0ECD2A25E0FB750089DCBE /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ECD2925E0FB750089DCBE /* MovieListTableViewCell.swift */; };
 		CE0ECD4625E100550089DCBE /* TMDExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ECD4525E100550089DCBE /* TMDExtensions.swift */; };
-		CE0ECD9E25E2B03E0089DCBE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ECD9B25E2B03D0089DCBE /* SearchTableViewCell.swift */; };
-		CE0ECD9F25E2B03E0089DCBE /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0ECD9C25E2B03E0089DCBE /* SearchTableViewCell.xib */; };
-		CE0ECDA025E2B03E0089DCBE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ECD9D25E2B03E0089DCBE /* SearchViewController.swift */; };
+		CE0ECDA825E2B1110089DCBE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ECDA725E2B1110089DCBE /* SearchViewController.swift */; };
+		CE0ECDAD25E2B19C0089DCBE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ECDAC25E2B19C0089DCBE /* SearchTableViewCell.swift */; };
+		CE0ECDB225E2B1E00089DCBE /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0ECDB125E2B1E00089DCBE /* SearchTableViewCell.xib */; };
 		CE51542025E0E1600097A452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51541F25E0E1600097A452 /* AppDelegate.swift */; };
 		CE51542425E0E1600097A452 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51542325E0E1600097A452 /* MovieListViewController.swift */; };
 		CE51542725E0E1600097A452 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE51542525E0E1600097A452 /* Main.storyboard */; };
@@ -49,9 +49,9 @@
 		CE0ECD2425E0F9090089DCBE /* MovieListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListTableViewCell.xib; sourceTree = "<group>"; };
 		CE0ECD2925E0FB750089DCBE /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		CE0ECD4525E100550089DCBE /* TMDExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDExtensions.swift; sourceTree = "<group>"; };
-		CE0ECD9B25E2B03D0089DCBE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = ../../../.Trash/SearchTableViewCell.swift; sourceTree = "<group>"; };
-		CE0ECD9C25E2B03E0089DCBE /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewCell.xib; path = ../../../.Trash/SearchTableViewCell.xib; sourceTree = "<group>"; };
-		CE0ECD9D25E2B03E0089DCBE /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../../../.Trash/SearchViewController.swift; sourceTree = "<group>"; };
+		CE0ECDA725E2B1110089DCBE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CE0ECDAC25E2B19C0089DCBE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		CE0ECDB125E2B1E00089DCBE /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		CE51541C25E0E1600097A452 /* TheMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE51541F25E0E1600097A452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE51542325E0E1600097A452 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -139,9 +139,6 @@
 		CE51541E25E0E1600097A452 /* TheMovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				CE0ECD9B25E2B03D0089DCBE /* SearchTableViewCell.swift */,
-				CE0ECD9C25E2B03E0089DCBE /* SearchTableViewCell.xib */,
-				CE0ECD9D25E2B03E0089DCBE /* SearchViewController.swift */,
 				CE0ECD4425E100350089DCBE /* Extensions */,
 				CE0ECD1925E0F6690089DCBE /* Services */,
 				CE0ECD1325E0F6030089DCBE /* Constants */,
@@ -154,6 +151,9 @@
 				CE0ECD1F25E0F7310089DCBE /* TMDMovieListModel.swift */,
 				CE0ECD2425E0F9090089DCBE /* MovieListTableViewCell.xib */,
 				CE0ECD2925E0FB750089DCBE /* MovieListTableViewCell.swift */,
+				CE0ECDA725E2B1110089DCBE /* SearchViewController.swift */,
+				CE0ECDAC25E2B19C0089DCBE /* SearchTableViewCell.swift */,
+				CE0ECDB125E2B1E00089DCBE /* SearchTableViewCell.xib */,
 			);
 			path = TheMovieDB;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 				CE51542925E0E1660097A452 /* Assets.xcassets in Resources */,
 				CE0ECD2525E0F9090089DCBE /* MovieListTableViewCell.xib in Resources */,
 				CE51542725E0E1600097A452 /* Main.storyboard in Resources */,
-				CE0ECD9F25E2B03E0089DCBE /* SearchTableViewCell.xib in Resources */,
+				CE0ECDB225E2B1E00089DCBE /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,13 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0ECDAD25E2B19C0089DCBE /* SearchTableViewCell.swift in Sources */,
 				CE0ECD1B25E0F6BE0089DCBE /* TMDServices.swift in Sources */,
 				CE51542425E0E1600097A452 /* MovieListViewController.swift in Sources */,
+				CE0ECDA825E2B1110089DCBE /* SearchViewController.swift in Sources */,
 				CE0ECD2A25E0FB750089DCBE /* MovieListTableViewCell.swift in Sources */,
-				CE0ECDA025E2B03E0089DCBE /* SearchViewController.swift in Sources */,
 				CE51542025E0E1600097A452 /* AppDelegate.swift in Sources */,
 				CE0ECD4625E100550089DCBE /* TMDExtensions.swift in Sources */,
-				CE0ECD9E25E2B03E0089DCBE /* SearchTableViewCell.swift in Sources */,
 				CE0ECD2025E0F7310089DCBE /* TMDMovieListModel.swift in Sources */,
 				CE0ECD1525E0F6470089DCBE /* TMDConstants.swift in Sources */,
 			);
