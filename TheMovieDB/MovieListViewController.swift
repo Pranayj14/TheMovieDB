@@ -23,6 +23,9 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "Movie List"
+//        setNavigationItem()
+        let searchButton = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(goToSearch)) // action:#selector(Class.MethodName) for swift 3
+        self.navigationItem.rightBarButtonItem  = searchButton
         movieListTableView.register(UINib(nibName: "MovieListTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieListTableViewCell")
         movieListTableView.delegate = self
         movieListTableView.dataSource = self
@@ -36,6 +39,12 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         refreshControl.addTarget(self, action: #selector(refreshMovieList(_:)), for: .valueChanged)
         getMovieList(pageNo: pageNo)
         }
+    
+    @objc func goToSearch(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func refreshMovieList(_ sender: Any) {
         // Fetch Weather Data
@@ -73,6 +82,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
         vc.movieId = movieList[indexPath.row]["id"] as? Int ?? 0
+        vc.navMovieTitle = movieList[indexPath.row]["title"] as? String ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

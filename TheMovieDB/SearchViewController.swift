@@ -16,7 +16,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     let userDefaults = UserDefaults.standard
     let services = TMDServices()
     var totalPages = Int()
-    var recentlySearchedArray = [String]()
+    var recentlySearchedArray = [AnyObject]()
+    var recentlySearchedDict = NSMutableDictionary()
     var movieList = [AnyObject]()
     var searchedMovieList = [AnyObject]()
     var pageNo = 1
@@ -26,20 +27,31 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         self.movieSearchTextfield.delegate = self
         self.searchMovieListTableView.delegate = self
         self.searchMovieListTableView.dataSource = self
-        if userDefaults.object(forKey: "recentlySearchedArray") as? [String] != nil {
-        recentlySearchedArray = userDefaults.object(forKey: "recentlySearchedArray") as! [String]
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if userDefaults.object(forKey: "recentlySearchedArray") as? [AnyObject] != nil && movieSearchTextfield.text?.count ?? 0 == 0{
+            recentlySearchedArray = userDefaults.object(forKey: "recentlySearchedArray") as? [AnyObject] ?? []
             recentlySearchedLabel.isHidden = false
             self.searchMovieListTableView.isHidden = false
             DispatchQueue.main.async {
                 self.searchMovieListTableView.reloadData()
             }
         }else{
-            self.searchMovieListTableView.isHidden = true
-            recentlySearchedLabel.isHidden = true
+            if(movieSearchTextfield.text?.count ?? 0 == 0){
+                self.searchMovieListTableView.isHidden = true
+                recentlySearchedLabel.isHidden = true
+            }else{
+                recentlySearchedLabel.isHidden = true
+                self.searchMovieListTableView.isHidden = false
+            }
+            
         }
         
         getMovieList(pageNo: 1)
-        // Do any additional setup after loading the view.
     }
 
     
@@ -63,9 +75,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         }
     }
     
-    @IBAction func searchMovie(_ sender: Any) {
-        
-    }
     // MARK: - function todismiss the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -84,7 +93,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
         if(recentlySearchedArray.count > 0 && movieSearchTextfield.text?.count ?? 0 == 0){
-            cell.movieName.text = recentlySearchedArray[indexPath.row]
+            cell.movieName.text = recentlySearchedArray[indexPath.row]["title"] as? String ?? ""
         }else{
             movieObject.parseData(movieObject:searchedMovieList[indexPath.row] as! NSDictionary)
             cell.loadData(data: movieObject)
@@ -94,11 +103,44 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var addObjectBool = true
         if recentlySearchedArray.count == 5{
             recentlySearchedArray.removeFirst()
         }
-        recentlySearchedArray.append(searchedMovieList[indexPath.row]["title"] as? String ?? "")
+        if(recentlySearchedArray.count >= 1){
+        for i in 0...recentlySearchedArray.count - 1{
+            if(searchedMovieList.count >= 1){
+                if(searchedMovieList[indexPath.row]["title"] as? String ?? "" == recentlySearchedArray[i]["title"] as? String ?? ""){
+                addObjectBool = false
+            }
+            }
+        }
+        }
+        if(searchedMovieList.count == 0){
+             addObjectBool = false
+        }
+        
+        if(addObjectBool){
+            recentlySearchedDict.setValue(searchedMovieList[indexPath.row]["title"] as? String ?? "", forKey: "title")
+            recentlySearchedDict.setValue(searchedMovieList[indexPath.row]["id"] as? Int ?? 0, forKey: "id")
+        recentlySearchedArray.append(recentlySearchedDict)
+            print(recentlySearchedArray)
         userDefaults.setValue(recentlySearchedArray, forKey: "recentlySearchedArray")
+        }
+        if(searchedMovieList.count >= 1){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        vc.movieId = searchedMovieList[indexPath.row]["id"] as? Int ?? 0
+        vc.navMovieTitle = searchedMovieList[indexPath.row]["title"] as? String ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+            vc.movieId = recentlySearchedArray[indexPath.row]["id"] as? Int ?? 0
+            vc.navMovieTitle = recentlySearchedArray[indexPath.row]["title"] as? String ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
     @IBAction func searchMovieText(_ sender: Any) {
@@ -116,9 +158,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                     if namex == movieSearchTextfield.text?.capitalized ?? ""{
                         searchedMovieList.append(movieList[i])
                         print(searchedMovieList)
-                        DispatchQueue.main.async {
-                            self.searchMovieListTableView.reloadData()
-                        }
+                        
                     }
                     break
                 }
@@ -134,11 +174,23 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             }
             
         }
+        DispatchQueue.main.async {
+            self.searchMovieListTableView.reloadData()
+        }
     }
     
     @IBAction func clearSearchText(_ sender: Any) {
         movieSearchTextfield.text = ""
         movieSearchTextfield.placeholder = "Search Users"
+        searchedMovieList.removeAll()
+        if(recentlySearchedArray.count > 0){
+        recentlySearchedLabel.isHidden = false
+        }
+        if(recentlySearchedArray.count == 0){
+            self.searchMovieListTableView.isHidden = true
+            recentlySearchedLabel.isHidden = true
+        }
+        self.searchMovieListTableView.reloadData()
         movieSearchTextfield.resignFirstResponder()
     }
     

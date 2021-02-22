@@ -17,4 +17,10 @@ class MovieCastCollectionViewCell: UICollectionViewCell {
         movieCastName.text = data.castName
     }
     
+    override func layoutSubviews() {
+      super.layoutSubviews()
+        movieCastImage.layer.cornerRadius = movieCastImage.frame.height/2
+        movieCastImage.layer.masksToBounds = true
+    }
+    
 }

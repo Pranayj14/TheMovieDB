@@ -53,6 +53,7 @@ class TMDMovieDetailstModel: NSObject {
     
     func appendString(concatArray: [String]) -> String {
         self.languageString = ""
+        if(concatArray.count >= 1){
         for i in 0...concatArray.count - 1{
             if(concatArray.count - 1 == i){
             self.languageString = languageString  + concatArray[i]
@@ -60,6 +61,7 @@ class TMDMovieDetailstModel: NSObject {
                 self.languageString = languageString  + concatArray[i] + ", "
 
             }
+        }
         }
         print(languageString)
         return languageString

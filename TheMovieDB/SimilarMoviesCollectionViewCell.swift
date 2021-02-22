@@ -17,4 +17,10 @@ class SimilarMoviesCollectionViewCell: UICollectionViewCell {
         similarMovieImage.imageFromURL(urlString: movieCastProfileLink)
         similarMovieName.text = data.movieTitle
     }
+    
+    override func layoutSubviews() {
+      super.layoutSubviews()
+        similarMovieImage.layer.cornerRadius = similarMovieImage.frame.height/2
+        similarMovieImage.layer.masksToBounds = true
+    }
 }

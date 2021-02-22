@@ -18,4 +18,10 @@ class MovieCrewCollectionViewCell: UICollectionViewCell {
         movieCrewImage.imageFromURL(urlString: movieCastProfileLink)
         movieCrewName.text = data.crewName
     }
+    
+    override func layoutSubviews() {
+      super.layoutSubviews()
+        movieCrewImage.layer.cornerRadius = movieCrewImage.frame.height/2
+        movieCrewImage.layer.masksToBounds = true
+    }
 }

@@ -40,3 +40,11 @@ extension UIImageView {
         }).resume()
     }
 }
+
+extension UIViewController {
+    func setNavigationItem() {
+        let imageView = UIImageView(image: UIImage(named: "search"))
+        let item = UIBarButtonItem(customView: imageView)
+        self.navigationItem.rightBarButtonItem = item
+    }
+}
