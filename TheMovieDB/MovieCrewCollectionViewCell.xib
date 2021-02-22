@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCrewCollectionViewCell" id="eaP-9g-L7q" customClass="MovieCrewCollectionViewCell" customModule="TheMovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="GnZ-gi-9oJ">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XOm-Aj-IN9">
+                        <rect key="frame" x="10" y="9" width="130" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="Je1-YK-5Nh"/>
+                            <constraint firstAttribute="height" constant="130" id="b3A-hi-vQg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kms-sR-e7s">
+                        <rect key="frame" x="10" y="144" width="130" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="wJv-Uf-1Mn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XOm-Aj-IN9" firstAttribute="leading" secondItem="GnZ-gi-9oJ" secondAttribute="leading" constant="10" id="Fzv-Te-8OR"/>
+                    <constraint firstAttribute="bottom" secondItem="kms-sR-e7s" secondAttribute="bottom" constant="10" id="OyZ-of-FE8"/>
+                    <constraint firstAttribute="trailing" secondItem="XOm-Aj-IN9" secondAttribute="trailing" constant="10" id="ZsE-zl-liF"/>
+                    <constraint firstItem="kms-sR-e7s" firstAttribute="trailing" secondItem="XOm-Aj-IN9" secondAttribute="trailing" id="bHO-f6-QC9"/>
+                    <constraint firstItem="kms-sR-e7s" firstAttribute="leading" secondItem="XOm-Aj-IN9" secondAttribute="leading" id="nfy-RD-mt8"/>
+                    <constraint firstItem="kms-sR-e7s" firstAttribute="top" secondItem="XOm-Aj-IN9" secondAttribute="bottom" constant="5" id="ouC-Lj-ilO"/>
+                    <constraint firstItem="XOm-Aj-IN9" firstAttribute="top" secondItem="GnZ-gi-9oJ" secondAttribute="top" constant="9" id="yd1-4e-bP3"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="149" height="193"/>
+            <connections>
+                <outlet property="movieCrewImage" destination="XOm-Aj-IN9" id="Mt0-Lf-pXd"/>
+                <outlet property="movieCrewName" destination="kms-sR-e7s" id="3N6-U4-Yw5"/>
+            </connections>
+            <point key="canvasLocation" x="128.98550724637681" y="43.861607142857139"/>
+        </collectionViewCell>
+    </objects>
+</document>

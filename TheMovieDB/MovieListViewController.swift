@@ -71,7 +71,8 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        vc.movieId = movieList[indexPath.row]["id"] as? Int ?? 0
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

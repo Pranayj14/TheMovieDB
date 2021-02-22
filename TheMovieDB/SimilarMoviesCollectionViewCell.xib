@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarMoviesCollectionViewCell" id="9NO-XN-A4R" customClass="SimilarMoviesCollectionViewCell" customModule="TheMovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="2xt-Z9-C85">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RDj-P3-MXv">
+                        <rect key="frame" x="10" y="9" width="130" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="ANq-TZ-PZa"/>
+                            <constraint firstAttribute="height" constant="130" id="oBW-Tk-EHh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDm-Gy-vEM">
+                        <rect key="frame" x="10" y="144" width="130" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="2IE-2t-Ohw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RDj-P3-MXv" firstAttribute="top" secondItem="2xt-Z9-C85" secondAttribute="top" constant="9" id="91f-5k-omP"/>
+                    <constraint firstItem="jDm-Gy-vEM" firstAttribute="trailing" secondItem="RDj-P3-MXv" secondAttribute="trailing" id="Mfa-TK-W4g"/>
+                    <constraint firstAttribute="bottom" secondItem="jDm-Gy-vEM" secondAttribute="bottom" constant="10" id="Omn-lW-8Rb"/>
+                    <constraint firstItem="jDm-Gy-vEM" firstAttribute="leading" secondItem="RDj-P3-MXv" secondAttribute="leading" id="kvr-s3-m0J"/>
+                    <constraint firstItem="RDj-P3-MXv" firstAttribute="leading" secondItem="2xt-Z9-C85" secondAttribute="leading" constant="10" id="qPI-Ka-OUF"/>
+                    <constraint firstItem="jDm-Gy-vEM" firstAttribute="top" secondItem="RDj-P3-MXv" secondAttribute="bottom" constant="5" id="tf0-4V-9Pk"/>
+                    <constraint firstAttribute="trailing" secondItem="RDj-P3-MXv" secondAttribute="trailing" constant="10" id="tg4-bO-9bN"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="149" height="193"/>
+            <connections>
+                <outlet property="similarMovieImage" destination="RDj-P3-MXv" id="OQf-jD-a77"/>
+                <outlet property="similarMovieName" destination="jDm-Gy-vEM" id="baN-vd-ZFm"/>
+            </connections>
+            <point key="canvasLocation" x="128.98550724637681" y="43.861607142857139"/>
+        </collectionViewCell>
+    </objects>
+</document>

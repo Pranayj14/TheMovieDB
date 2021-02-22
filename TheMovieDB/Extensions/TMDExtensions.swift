@@ -31,7 +31,7 @@ extension UIImageView {
                 activityIndicator.removeFromSuperview()
                 overlay.removeFromSuperview()
                 if image == nil{
-                    print("Image is broken or image url is not valid.")
+                    self.image = UIImage(named: "brokenImage")
                 }else{
                     self.image = image
                     
