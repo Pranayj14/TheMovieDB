@@ -8,6 +8,7 @@
 import Foundation
 
 class TMDMovieDetailstModel: NSObject {
+    // MARK: - Declaration of outlets and variables.
     var imageUrl = String()
     var movieTitle = String()
     var movieReleaseDate = String()
@@ -19,8 +20,9 @@ class TMDMovieDetailstModel: NSObject {
     var castImage = String()
     var crewName = String()
     var crewImage = String()
+    
+    // MARK: - Parse movie detail data.
     func parseMovieDetailsData(movieDetailsObject:NSDictionary){
-        print(movieDetailsObject)
         imageUrl = movieDetailsObject["poster_path"] as? String ?? ""
         movieTitle = movieDetailsObject["title"] as? String ?? ""
         movieReleaseDate = movieDetailsObject["release_date"] as? String ?? ""
@@ -33,37 +35,37 @@ class TMDMovieDetailstModel: NSObject {
         movieDescription = movieDetailsObject["overview"] as? String ?? ""
     }
     
-    
+    // MARK: - Parse data for movie cast.
     func parseDataForMovieCast(movieCastObject: NSDictionary){
         castName = movieCastObject["name"] as? String ?? ""
         castImage = movieCastObject["profile_path"] as? String ?? ""
     }
     
+    // MARK: - Parse data for movie crew.
     func parseDataForMovieCrew(movieCrewObject: NSDictionary){
         crewName = movieCrewObject["name"] as? String ?? ""
         crewImage = movieCrewObject["profile_path"] as? String ?? ""
     }
     
+    // MARK: - Parse data for similar movies.
     func parseDataForSimilarMovies(similarMovieObject: NSDictionary){
         movieTitle = similarMovieObject["title"] as? String ?? ""
         imageUrl = similarMovieObject["poster_path"] as? String ?? ""
     }
     
-    
-    
+    // MARK: - Append string from genre and language array and display single string on label.
     func appendString(concatArray: [String]) -> String {
         self.languageString = ""
         if(concatArray.count >= 1){
-        for i in 0...concatArray.count - 1{
-            if(concatArray.count - 1 == i){
-            self.languageString = languageString  + concatArray[i]
-            }else{
-                self.languageString = languageString  + concatArray[i] + ", "
-
+            for i in 0...concatArray.count - 1{
+                if(concatArray.count - 1 == i){
+                    self.languageString = languageString  + concatArray[i]
+                }else{
+                    self.languageString = languageString  + concatArray[i] + ", "
+                    
+                }
             }
         }
-        }
-        print(languageString)
         return languageString
     }
 }

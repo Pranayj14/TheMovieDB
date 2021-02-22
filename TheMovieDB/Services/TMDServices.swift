@@ -12,6 +12,7 @@ class TMDServices {
     var json = NSDictionary()
     typealias response = NSDictionary
     typealias jsonHandler = (response?, Error?) -> Void
+    // MARK: - GetMovieList api call.
     func getMovieList(pageNo: Int, completionHandler: @escaping jsonHandler){
         let getURL : String = getMovieListApi + apiKey + "&" + "page=\(pageNo)"
         
@@ -29,46 +30,20 @@ class TMDServices {
                 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary
-                    print("self.movieList",json as Any)
                     completionHandler(json, nil)
-//                    DispatchQueue.main.async {
-//                        completed()
-//                    }
                     
                 }catch _ as NSError {
                     completionHandler(nil, error!)
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                            self.getAuthorList {
-////                                self.authorsCollectionView.reloadData()
-////
-////                            }
-//                        }))
-//                        self.present(alert, animated: false, completion: nil)
-//                    }
-                    
                 }
                 
             }else{
                 completionHandler(nil, error!)
-//                DispatchQueue.main.async {
-//                    let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                        self.getAuthorList {
-////                            self.authorsCollectionView.reloadData()
-////
-////                        }
-//                    }))
-//                    self.present(alert, animated: false, completion: nil)
-//
-//                }
-                
             }
             
         }.resume()
     }
-
+    
+    // MARK: - GetMovieDetails api call.
     func getMovieDetails(id:Int,completionHandler: @escaping jsonHandler){
         let getURL : String = getMovieDetailsApi + "\(id)?" + apiKey
         
@@ -86,47 +61,20 @@ class TMDServices {
                 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary
-                    print("self.movieList",json as Any)
                     completionHandler(json, nil)
-//                    DispatchQueue.main.async {
-//                        completed()
-//                    }
                     
                 }catch _ as NSError {
                     completionHandler(nil, error!)
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                            self.getAuthorList {
-////                                self.authorsCollectionView.reloadData()
-////
-////                            }
-//                        }))
-//                        self.present(alert, animated: false, completion: nil)
-//                    }
-                    
                 }
                 
             }else{
                 completionHandler(nil, error!)
-//                DispatchQueue.main.async {
-//                    let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                        self.getAuthorList {
-////                            self.authorsCollectionView.reloadData()
-////
-////                        }
-//                    }))
-//                    self.present(alert, animated: false, completion: nil)
-//
-//                }
-                
             }
             
         }.resume()
     }
     
-    
+    // MARK: - GetMovieCredits api call.
     func getMovieCredits(id:Int,completionHandler: @escaping jsonHandler){
         let getURL : String = getMovieDetailsApi + "\(id)/credits?" + apiKey
         
@@ -144,46 +92,20 @@ class TMDServices {
                 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary
-                    print("self.movieList",json as Any)
                     completionHandler(json, nil)
-//                    DispatchQueue.main.async {
-//                        completed()
-//                    }
                     
                 }catch _ as NSError {
                     completionHandler(nil, error!)
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                            self.getAuthorList {
-////                                self.authorsCollectionView.reloadData()
-////
-////                            }
-//                        }))
-//                        self.present(alert, animated: false, completion: nil)
-//                    }
-                    
                 }
                 
             }else{
                 completionHandler(nil, error!)
-//                DispatchQueue.main.async {
-//                    let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                        self.getAuthorList {
-////                            self.authorsCollectionView.reloadData()
-////
-////                        }
-//                    }))
-//                    self.present(alert, animated: false, completion: nil)
-//
-//                }
-                
             }
             
         }.resume()
     }
-
+    
+    // MARK: - GetSimilarMovies api call.
     func getSimilarMovies(id:Int,completionHandler: @escaping jsonHandler){
         let getURL : String = getMovieDetailsApi + "\(id)/similar?" + apiKey
         
@@ -201,41 +123,13 @@ class TMDServices {
                 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary
-                    print("self.movieList",json as Any)
                     completionHandler(json, nil)
-//                    DispatchQueue.main.async {
-//                        completed()
-//                    }
-                    
                 }catch _ as NSError {
                     completionHandler(nil, error!)
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                            self.getAuthorList {
-////                                self.authorsCollectionView.reloadData()
-////
-////                            }
-//                        }))
-//                        self.present(alert, animated: false, completion: nil)
-//                    }
-                    
                 }
                 
             }else{
                 completionHandler(nil, error!)
-//                DispatchQueue.main.async {
-//                    let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
-////                        self.getAuthorList {
-////                            self.authorsCollectionView.reloadData()
-////
-////                        }
-//                    }))
-//                    self.present(alert, animated: false, completion: nil)
-//
-//                }
-                
             }
             
         }.resume()

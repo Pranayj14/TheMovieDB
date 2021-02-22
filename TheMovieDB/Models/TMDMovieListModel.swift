@@ -8,6 +8,7 @@
 import Foundation
 
 class TMDMovieListModel: NSObject {
+    // MARK: - Declarations for outlets and variables.
     var movieTitle = String()
     var movieReleaseDate = String()
     var movieDescription = String()
@@ -18,13 +19,15 @@ class TMDMovieListModel: NSObject {
         movieDescription = movieObject["overview"] as? String ?? ""
         imageUrl = movieObject["poster_path"] as? String ?? ""
     }
+    
+    // MARK: - Load more function for pagination.
     func loadMore(lastRowIndex: Int, currentRow: Int, totalCount: Int, userCount: Int, loadMore: Bool) -> Bool{
         
-            if currentRow == lastRowIndex {
-                if totalCount > userCount && !loadMore && userCount > 0{
-                    return true
-                }
+        if currentRow == lastRowIndex {
+            if totalCount > userCount && !loadMore && userCount > 0{
+                return true
             }
+        }
         return false
     }
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate,UITableViewDataSource {
+    
+    // MARK: - Declarations for outlets and variables.
     @IBOutlet var recentlySearchedLabel: UILabel!
     @IBOutlet weak var movieSearchTextfield: UITextField!
     @IBOutlet weak var searchMovieListTableView: UITableView!
@@ -21,6 +23,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     var movieList = [AnyObject]()
     var searchedMovieList = [AnyObject]()
     var pageNo = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchMovieListTableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchTableViewCell")
@@ -51,44 +54,52 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             
         }
         
-        getMovieList(pageNo: 1)
+        getMovieList(pageNo: pageNo)
     }
-
     
+    // MARK: - GetMovieList function called to get movie list.
     func getMovieList(pageNo:Int){
         services.getMovieList(pageNo: pageNo) { (response, error) in
-//            print(self.pageNo)
-            self.totalPages = response?["total_pages"] as? Int ?? 0
-            
-            if let movieList:[AnyObject] = response?["results"] as? [AnyObject] {
-            self.movieList += movieList
-//                print("self.movieList.count",self.movieList.count)
-            }
-            DispatchQueue.main.async {
-            for _ in self.pageNo..<self.totalPages{
-                self.pageNo = self.pageNo + 1
-//                print("self.pageNo",self.pageNo)
-                self.getMovieList(pageNo: self.pageNo)
-            }
-            
+            if(error == nil){
+                self.totalPages = response?["total_pages"] as? Int ?? 0
+                
+                if let movieList:[AnyObject] = response?["results"] as? [AnyObject] {
+                    self.movieList += movieList
+                }
+                DispatchQueue.main.async {
+                    for _ in self.pageNo..<self.totalPages{
+                        self.pageNo = self.pageNo + 1
+                        self.getMovieList(pageNo: self.pageNo)
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "", message: "Check your internet connection or contact the Administrator.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                        self.getMovieList(pageNo:pageNo)
+                    }))
+                    self.present(alert, animated: false, completion: nil)
+                }
             }
         }
     }
     
-    // MARK: - function todismiss the keyboard
+    // MARK: - function todismiss the keyboard.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    // MARK: - Displays numberOfRowsInSection according to array count in tableview.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(recentlySearchedArray.count > 0 && movieSearchTextfield.text?.count ?? 0 == 0){
-           return recentlySearchedArray.count
+            return recentlySearchedArray.count
         }else{
             return searchedMovieList.count
         }
     }
     
+    // MARK: - Loads tableview cell.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
@@ -102,37 +113,37 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         return cell
     }
     
+    // MARK: - Selects a particular cell in tableview or navigates to particular controller on cell selection.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var addObjectBool = true
         if recentlySearchedArray.count == 5{
             recentlySearchedArray.removeFirst()
         }
         if(recentlySearchedArray.count >= 1){
-        for i in 0...recentlySearchedArray.count - 1{
-            if(searchedMovieList.count >= 1){
-                if(searchedMovieList[indexPath.row]["title"] as? String ?? "" == recentlySearchedArray[i]["title"] as? String ?? ""){
-                addObjectBool = false
+            for i in 0...recentlySearchedArray.count - 1{
+                if(searchedMovieList.count >= 1){
+                    if(searchedMovieList[indexPath.row]["title"] as? String ?? "" == recentlySearchedArray[i]["title"] as? String ?? ""){
+                        addObjectBool = false
+                    }
+                }
             }
-            }
-        }
         }
         if(searchedMovieList.count == 0){
-             addObjectBool = false
+            addObjectBool = false
         }
         
         if(addObjectBool){
             recentlySearchedDict.setValue(searchedMovieList[indexPath.row]["title"] as? String ?? "", forKey: "title")
             recentlySearchedDict.setValue(searchedMovieList[indexPath.row]["id"] as? Int ?? 0, forKey: "id")
-        recentlySearchedArray.append(recentlySearchedDict)
-            print(recentlySearchedArray)
-        userDefaults.setValue(recentlySearchedArray, forKey: "recentlySearchedArray")
+            recentlySearchedArray.append(recentlySearchedDict)
+            userDefaults.setValue(recentlySearchedArray, forKey: "recentlySearchedArray")
         }
         if(searchedMovieList.count >= 1){
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
-        vc.movieId = searchedMovieList[indexPath.row]["id"] as? Int ?? 0
-        vc.navMovieTitle = searchedMovieList[indexPath.row]["title"] as? String ?? ""
-        self.navigationController?.pushViewController(vc, animated: true)
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+            vc.movieId = searchedMovieList[indexPath.row]["id"] as? Int ?? 0
+            vc.navMovieTitle = searchedMovieList[indexPath.row]["title"] as? String ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
         }else{
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
@@ -143,6 +154,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
     }
     
+    // MARK: - Displays movie list according to the text enter in the textfield.
     @IBAction func searchMovieText(_ sender: Any) {
         recentlySearchedLabel.isHidden = true
         self.searchMovieListTableView.isHidden = false
@@ -151,21 +163,18 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             for i in 0...movieList.count - 1{
                 let movieTitle = movieList[i]["title"] as? String ?? ""
                 let movieTitleArray = movieTitle.components(separatedBy: " ")
-//                print(movieTitleArray)
                 for j in 0...movieTitleArray.count - 1{
                     let word = movieTitleArray[j]
                     let namex = word.prefix(movieSearchTextfield.text?.count ?? 0)
                     if namex == movieSearchTextfield.text?.capitalized ?? ""{
-                        searchedMovieList.append(movieList[i])
-                        print(searchedMovieList)
-                        
+                        searchedMovieList.append(movieList[i])                        
                     }
                     break
                 }
             }
         }else{
             if(recentlySearchedArray.count < 0){
-            recentlySearchedLabel.isHidden = false
+                recentlySearchedLabel.isHidden = false
             }
             searchedMovieList.removeAll()
             self.searchMovieListTableView.reloadData()
@@ -179,12 +188,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         }
     }
     
+    // MARK: - Clears textfield text when cancel button pressed.
     @IBAction func clearSearchText(_ sender: Any) {
         movieSearchTextfield.text = ""
         movieSearchTextfield.placeholder = "Search Users"
         searchedMovieList.removeAll()
         if(recentlySearchedArray.count > 0){
-        recentlySearchedLabel.isHidden = false
+            recentlySearchedLabel.isHidden = false
         }
         if(recentlySearchedArray.count == 0){
             self.searchMovieListTableView.isHidden = true
@@ -195,13 +205,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

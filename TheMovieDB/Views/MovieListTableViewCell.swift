@@ -8,7 +8,7 @@
 import UIKit
 
 class MovieListTableViewCell: UITableViewCell {
-
+    // MARK: - Declarations for outlets and variables.
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
@@ -18,13 +18,14 @@ class MovieListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
+    // MARK: - Load Data to load MovieListTableViewCell.
     func loadData(data: TMDMovieListModel){
         movieTitle.text = data.movieTitle
         releaseDate.text = data.movieReleaseDate

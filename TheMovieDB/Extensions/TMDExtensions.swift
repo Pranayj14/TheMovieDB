@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
-// MARK: - Extension to show image on the imageview by using image url
+// MARK: - Extension to show image on the imageview by using image url.
 extension UIImageView {
     public func imageFromURL(urlString: String) {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        var activityIndicator = UIActivityIndicatorView()
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView(style: .medium)
+        } else {
+            activityIndicator = UIActivityIndicatorView(style: .gray)
+            // Fallback on earlier versions
+        }
         activityIndicator.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         
         let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
@@ -41,10 +47,3 @@ extension UIImageView {
     }
 }
 
-extension UIViewController {
-    func setNavigationItem() {
-        let imageView = UIImageView(image: UIImage(named: "search"))
-        let item = UIBarButtonItem(customView: imageView)
-        self.navigationItem.rightBarButtonItem = item
-    }
-}
