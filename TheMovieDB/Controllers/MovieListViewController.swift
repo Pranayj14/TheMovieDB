@@ -35,7 +35,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
             movieListTableView.addSubview(refreshControl)
         }
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Weather Data...")
+        refreshControl.attributedTitle = NSAttributedString(string: "Stay Tuned...")
         refreshControl.addTarget(self, action: #selector(refreshMovieList(_:)), for: .valueChanged)
         getMovieList(pageNo: pageNo)
         }
