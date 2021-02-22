@@ -31,11 +31,13 @@
       "size" : "40x40"
     },
     {
+      "filename" : "60x60@2.jpg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "60x60@3jpg.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
