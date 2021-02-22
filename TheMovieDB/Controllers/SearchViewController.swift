@@ -36,6 +36,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.title = "Search Movies"
         if userDefaults.object(forKey: "recentlySearchedArray") as? [AnyObject] != nil && movieSearchTextfield.text?.count ?? 0 == 0{
             recentlySearchedArray = userDefaults.object(forKey: "recentlySearchedArray") as? [AnyObject] ?? []
             recentlySearchedLabel.isHidden = false

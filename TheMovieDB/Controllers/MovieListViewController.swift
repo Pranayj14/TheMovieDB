@@ -49,6 +49,11 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "Movie List"
+    }
+    
     // MARK: - This function refreshes the movies list and loads page number 1.
     @objc func refreshMovieList(_ sender: Any) {
         getMovieList(pageNo: 1)
